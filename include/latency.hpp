@@ -5,7 +5,7 @@
 #include <cstdint>
 #include <vector>
 
-namespace aquila {
+namespace limitbook {
 
 using Clock = std::chrono::steady_clock;
 
@@ -54,4 +54,4 @@ private:
     std::vector<std::uint64_t> samples_;
 };
 
-}  // namespace aquila
+}  // namespace limitbook

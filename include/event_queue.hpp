@@ -10,7 +10,7 @@
 #include <new>
 #include <thread>
 
-namespace aquila {
+namespace limitbook {
 
 // Interface shared by the queue implementations. The pipeline is templated on it,
 // so swapping the mutex queue for the lock-free ring is a one-word change.
@@ -128,4 +128,4 @@ private:
     alignas(kCacheLine) std::atomic<bool> closed_{false};
 };
 
-}  // namespace aquila
+}  // namespace limitbook

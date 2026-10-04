@@ -27,7 +27,7 @@ void* operator new(std::size_t n) {
 void operator delete(void* p) noexcept { std::free(p); }
 void operator delete(void* p, std::size_t) noexcept { std::free(p); }
 
-using namespace aquila;
+using namespace limitbook;
 
 template <typename Engine>
 void measure(const char* name, const std::vector<Event>& events, std::size_t warmup) {

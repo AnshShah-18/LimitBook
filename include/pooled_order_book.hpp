@@ -7,7 +7,7 @@
 #include "flat_id_map.hpp"
 #include "order_book.hpp"
 
-namespace aquila {
+namespace limitbook {
 
 // Optimized order book (Phase 8). Same contract and behaviour as MapListOrderBook;
 // the difference is purely memory layout. Profiling the baseline showed roughly a
@@ -83,4 +83,4 @@ private:
 
 static_assert(OrderBookLike<PooledOrderBook>);
 
-}  // namespace aquila
+}  // namespace limitbook

@@ -12,7 +12,7 @@
 #include "event_generator.hpp"
 #include "matching_engine.hpp"
 
-using namespace aquila;
+using namespace limitbook;
 
 namespace {
 

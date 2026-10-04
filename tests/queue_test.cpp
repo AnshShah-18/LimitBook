@@ -8,7 +8,7 @@
 #include "event_generator.hpp"
 #include "pipeline.hpp"
 
-using namespace aquila;
+using namespace limitbook;
 
 template <typename Q>
 class QueueTest : public ::testing::Test {};

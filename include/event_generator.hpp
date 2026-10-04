@@ -7,7 +7,7 @@
 
 #include "event.hpp"
 
-namespace aquila {
+namespace limitbook {
 
 struct GeneratorConfig {
     std::uint64_t seed = 42;          // same seed -> identical event stream
@@ -60,4 +60,4 @@ private:
     OrderId nextId_;
 };
 
-}  // namespace aquila
+}  // namespace limitbook

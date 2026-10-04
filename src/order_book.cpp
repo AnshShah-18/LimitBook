@@ -1,6 +1,6 @@
 #include "order_book.hpp"
 
-namespace aquila {
+namespace limitbook {
 
 bool MapListOrderBook::add(const Order& order) {
     if (index_.contains(order.id)) return false;
@@ -82,4 +82,4 @@ Quantity MapListOrderBook::depthAt(Side side, Price price) const {
     return side == Side::Buy ? sum(bids_) : sum(asks_);
 }
 
-}  // namespace aquila
+}  // namespace limitbook

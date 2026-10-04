@@ -7,7 +7,7 @@
 #include "order_book.hpp"
 #include "pooled_order_book.hpp"
 
-namespace aquila {
+namespace limitbook {
 
 enum class Status : std::uint8_t {
     Accepted,           // add/modify accepted (may have traded, may be resting)
@@ -141,4 +141,4 @@ using PooledEngine = BasicMatchingEngine<PooledOrderBook>;
 extern template class BasicMatchingEngine<MapListOrderBook>;
 extern template class BasicMatchingEngine<PooledOrderBook>;
 
-}  // namespace aquila
+}  // namespace limitbook

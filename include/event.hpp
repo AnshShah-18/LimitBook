@@ -6,7 +6,7 @@
 
 #include "order.hpp"
 
-namespace aquila {
+namespace limitbook {
 
 enum class EventType : std::uint8_t { Add, Cancel, Modify };
 
@@ -26,4 +26,4 @@ struct Event {
 std::string toString(const Event& e);
 std::optional<Event> parseEvent(std::string_view line);
 
-}  // namespace aquila
+}  // namespace limitbook

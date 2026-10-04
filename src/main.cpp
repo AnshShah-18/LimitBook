@@ -1,10 +1,10 @@
-// aquila: replay a synthetic market-event stream through the matching engine and
+// limitbook: replay a synthetic market-event stream through the matching engine and
 // report measured throughput and latency.
 //
-//   ./aquila --events 1000000
-//   ./aquila --events 1000000 --mode spsc --book pooled
-//   ./aquila --events 200000 --mode mutex --rate 500000     # paced offered load
-//   ./aquila --events 1000000 --csv ../data/runs.csv        # append a result row
+//   ./limitbook --events 1000000
+//   ./limitbook --events 1000000 --mode spsc --book pooled
+//   ./limitbook --events 200000 --mode mutex --rate 500000     # paced offered load
+//   ./limitbook --events 1000000 --csv ../data/runs.csv        # append a result row
 
 #include <cstdio>
 #include <cstdlib>
@@ -18,7 +18,7 @@
 #include "matching_engine.hpp"
 #include "pipeline.hpp"
 
-using namespace aquila;
+using namespace limitbook;
 
 namespace {
 
@@ -36,7 +36,7 @@ struct Options {
 
 [[noreturn]] void usage(int code) {
     std::cout <<
-        "usage: aquila [options]\n"
+        "usage: limitbook [options]\n"
         "  --events N        number of events to generate and process (default 1000000)\n"
         "  --seed S          RNG seed; same seed = same event stream (default 42)\n"
         "  --mode M          single | mutex | spsc (default single)\n"

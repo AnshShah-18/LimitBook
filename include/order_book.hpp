@@ -10,7 +10,7 @@
 
 #include "order.hpp"
 
-namespace aquila {
+namespace limitbook {
 
 // The contract every order-book implementation satisfies. The matching engine is
 // templated on it, so alternative data structures can be swapped in, tested by the
@@ -82,4 +82,4 @@ private:
 
 static_assert(OrderBookLike<MapListOrderBook>);
 
-}  // namespace aquila
+}  // namespace limitbook

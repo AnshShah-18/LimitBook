@@ -1,6 +1,6 @@
 #include "matching_engine.hpp"
 
-namespace aquila {
+namespace limitbook {
 
 // The engine is a header template so the book type is resolved at compile time
 // (no virtual dispatch on the hot path). Instantiating it here once keeps every
@@ -8,4 +8,4 @@ namespace aquila {
 template class BasicMatchingEngine<MapListOrderBook>;
 template class BasicMatchingEngine<PooledOrderBook>;
 
-}  // namespace aquila
+}  // namespace limitbook

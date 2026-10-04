@@ -9,7 +9,7 @@
 
 #include "bench_common.hpp"
 
-using namespace aquila;
+using namespace limitbook;
 
 namespace {
 

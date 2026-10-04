@@ -6,7 +6,7 @@
 
 #include "order.hpp"
 
-namespace aquila {
+namespace limitbook {
 
 // Open-addressing hash map OrderId -> uint32 slot index, used by PooledOrderBook in
 // place of std::unordered_map.
@@ -100,4 +100,4 @@ private:
     std::size_t size_ = 0;
 };
 
-}  // namespace aquila
+}  // namespace limitbook

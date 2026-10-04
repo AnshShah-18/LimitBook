@@ -10,7 +10,7 @@
 #include "latency.hpp"
 #include "matching_engine.hpp"
 
-namespace aquila {
+namespace limitbook {
 
 struct RunResult {
     std::uint64_t events = 0;
@@ -100,4 +100,4 @@ RunResult runPipeline(Engine& engine, std::span<const Event> events,
             static_cast<double>(end - start) / 1e9, rec.summarize()};
 }
 
-}  // namespace aquila
+}  // namespace limitbook

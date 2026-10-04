@@ -2,7 +2,7 @@
 
 #include <cstdio>
 
-namespace aquila {
+namespace limitbook {
 
 std::string_view toString(Side s) noexcept { return s == Side::Buy ? "BUY" : "SELL"; }
 
@@ -40,4 +40,4 @@ std::string formatPrice(Price ticks) {
     return buf;
 }
 
-}  // namespace aquila
+}  // namespace limitbook

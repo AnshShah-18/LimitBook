@@ -4,7 +4,7 @@
 
 #include "book_types.hpp"
 
-using namespace aquila;
+using namespace limitbook;
 
 template <typename Book>
 class OrderBookTest : public ::testing::Test {

@@ -5,7 +5,7 @@
 #include "book_types.hpp"
 #include "matching_engine.hpp"
 
-using namespace aquila;
+using namespace limitbook;
 
 template <typename Book>
 class MatchingEngineTest : public ::testing::Test {

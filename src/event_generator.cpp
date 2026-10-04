@@ -1,6 +1,6 @@
 #include "event_generator.hpp"
 
-namespace aquila {
+namespace limitbook {
 
 namespace {
 // std::uniform_*_distribution output differs between standard libraries. These
@@ -102,4 +102,4 @@ std::vector<Event> EventGenerator::prefill(std::size_t count) {
     return out;
 }
 
-}  // namespace aquila
+}  // namespace limitbook

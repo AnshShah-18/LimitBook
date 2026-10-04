@@ -4,7 +4,7 @@
 #include <string>
 #include <string_view>
 
-namespace aquila {
+namespace limitbook {
 
 // Prices are stored as integer ticks (cents): 101.25 -> 10125.
 // Integer arithmetic keeps price comparisons exact and keys stable in maps.
@@ -51,4 +51,4 @@ struct Trade {
     bool operator==(const Trade&) const = default;
 };
 
-}  // namespace aquila
+}  // namespace limitbook

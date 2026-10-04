@@ -1,6 +1,6 @@
-# Aquila: High-Performance Limit Order Book & Matching Engine
+# LimitBook: High-Performance Limit Order Book & Matching Engine
 
-Aquila is a simulated exchange matching engine written in C++20. It takes a stream of
+LimitBook is a simulated exchange matching engine written in C++20. It takes a stream of
 buy/sell orders, cancels and modifications, keeps a limit order book, matches orders
 with **price-time priority**, emits trades, and measures its own throughput and
 latency.
@@ -10,7 +10,7 @@ structures in the order book, the matching algorithm, the concurrency model, and
 profile-driven optimizations whose before/after numbers are measured, not estimated.
 
 ```
-$ ./aquila --events 1000000
+$ ./limitbook --events 1000000
 Mode:              single (pooled book)
 Events processed:  1,000,000
 Trades executed:   205,714
@@ -51,7 +51,7 @@ machine described under [Performance](#performance). Raw output is in `data/`.
 | `EventGenerator` | `include/event_generator.hpp` | Deterministic synthetic market events |
 | `MutexQueue`, `SpscRingBuffer` | `include/event_queue.hpp` | Swappable producer/consumer queues |
 | pipeline runners | `include/pipeline.hpp` | Single-threaded and two-thread replay with latency capture |
-| `aquila` | `src/main.cpp` | CLI driver |
+| `limitbook` | `src/main.cpp` | CLI driver |
 
 ### Design decisions
 
@@ -128,8 +128,8 @@ On macOS, install the tools with `xcode-select --install` and `brew install cmak
 On Ubuntu/Debian, use `sudo apt install build-essential cmake git`.
 
 ```bash
-git clone https://github.com/<your-username>/Aquila.git
-cd Aquila
+git clone https://github.com/<your-username>/LimitBook.git
+cd LimitBook
 mkdir build
 cd build
 cmake ..
@@ -140,7 +140,7 @@ The build type defaults to Release. Run the tests and the engine from inside `bu
 
 ```bash
 ctest --output-on-failure
-./aquila --events 1000000
+./limitbook --events 1000000
 ```
 
 Offline build with local checkouts of the two libraries:
@@ -151,20 +151,20 @@ cmake .. -DFETCHCONTENT_SOURCE_DIR_GOOGLETEST=/path/to/googletest \
 ```
 
 Options:
-- `-DAQUILA_SANITIZE=ON` builds with AddressSanitizer + UBSan.
-- `-DAQUILA_NATIVE=ON` adds `-march=native`.
-- `-DAQUILA_BUILD_TESTS=OFF` / `-DAQUILA_BUILD_BENCHMARKS=OFF` skip those targets.
+- `-DLIMITBOOK_SANITIZE=ON` builds with AddressSanitizer + UBSan.
+- `-DLIMITBOOK_NATIVE=ON` adds `-march=native`.
+- `-DLIMITBOOK_BUILD_TESTS=OFF` / `-DLIMITBOOK_BUILD_BENCHMARKS=OFF` skip those targets.
 
 ## Run
 
 ```bash
-./aquila --events 1000000                         # single-threaded, pooled book
-./aquila --events 1000000 --book baseline         # baseline book
-./aquila --events 1000000 --mode spsc             # generator thread -> SPSC ring -> engine
-./aquila --events 1000000 --mode mutex --rate 500000   # paced producer, 500K events/s
-./aquila --events 1000000 --csv ../data/runs.csv  # append a result row
-./aquila --events 20 --dump events.txt            # write the event stream as text
-./aquila --help
+./limitbook --events 1000000                         # single-threaded, pooled book
+./limitbook --events 1000000 --book baseline         # baseline book
+./limitbook --events 1000000 --mode spsc             # generator thread -> SPSC ring -> engine
+./limitbook --events 1000000 --mode mutex --rate 500000   # paced producer, 500K events/s
+./limitbook --events 1000000 --csv ../data/runs.csv  # append a result row
+./limitbook --events 20 --dump events.txt            # write the event stream as text
+./limitbook --help
 ```
 
 Event text format, with prices in ticks:
@@ -184,7 +184,7 @@ throughput.
 
 ```bash
 cd build
-ctest --output-on-failure        # or: ./aquila_tests
+ctest --output-on-failure        # or: ./limitbook_tests
 ```
 
 There are 88 tests. Every order-book and engine test is a typed test that runs against
@@ -219,13 +219,13 @@ There are 88 tests. Every order-book and engine test is a typed test that runs a
     `0 < remaining ≤ quantity`, cancelled orders never trade, trade ids are contiguous,
     and trade records sum to the engine's executed volume.
 
-The suite also passes under ASan + UBSan (`-DAQUILA_SANITIZE=ON`), and the queue and
+The suite also passes under ASan + UBSan (`-DLIMITBOOK_SANITIZE=ON`), and the queue and
 pipeline tests pass under ThreadSanitizer (`-DCMAKE_CXX_FLAGS=-fsanitize=thread`).
 
 ## Benchmarking
 
 ```bash
-scripts/run_benchmarks.sh build            # ~6 min; writes data/*.json, data/aquila_runs.csv
+scripts/run_benchmarks.sh build            # ~6 min; writes data/*.json, data/limitbook_runs.csv
 python3 python/analyze_benchmarks.py       # summary tables, data/benchmark_results.csv, data/plots/
 ```
 
@@ -293,7 +293,7 @@ Order-book operations (per add+cancel or cancel+re-add pair):
 ### Results on Apple Silicon (macOS)
 
 The same build on an Apple Silicon Mac (Apple Clang 17, Release), with one
-`./aquila --events 1000000` run:
+`./limitbook --events 1000000` run:
 
 ```
 Mode:              single (pooled book)
@@ -327,8 +327,8 @@ Profiles cover only `MatchingEngine::process()` over 300K events
 On a bare-metal Linux box, the equivalent `perf` workflow is:
 
 ```bash
-perf stat -e cycles,instructions,branch-misses,cache-misses ./aquila --events 1000000
-perf record -g ./aquila --events 1000000 && perf report
+perf stat -e cycles,instructions,branch-misses,cache-misses ./limitbook --events 1000000
+perf record -g ./limitbook --events 1000000 && perf report
 ```
 
 #### Step 1: remove per-order heap allocation
@@ -437,7 +437,7 @@ medians of 3 runs:
 ## Project layout
 
 ```
-Aquila/
+LimitBook/
 ├── include/            order.hpp, order_book.hpp, pooled_order_book.hpp, flat_id_map.hpp,
 │                       matching_engine.hpp, event.hpp, event_generator.hpp,
 │                       event_queue.hpp, latency.hpp, pipeline.hpp
@@ -450,7 +450,7 @@ Aquila/
 ├── tools/              alloc_profile.cpp, ab_compare.py
 ├── python/             analyze_benchmarks.py
 ├── scripts/            run_benchmarks.sh
-├── data/               raw benchmark JSON, aquila_runs.csv, benchmark_results.csv,
+├── data/               raw benchmark JSON, limitbook_runs.csv, benchmark_results.csv,
 │                       alloc_profile.txt, plots/, profiling/ (callgrind reports, A/B runs)
 └── CMakeLists.txt
 ```

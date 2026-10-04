@@ -1,7 +1,7 @@
 #include "pooled_order_book.hpp"
 
 
-namespace aquila {
+namespace limitbook {
 
 // Linear scan from the best price (back of the vector) toward worse prices.
 // Profiling showed std::lower_bound at ~20% of engine instructions: a binary search
@@ -126,4 +126,4 @@ Quantity PooledOrderBook::depthAt(Side side, Price price) const {
     return total;
 }
 
-}  // namespace aquila
+}  // namespace limitbook

@@ -13,6 +13,6 @@
 Reproduce a profile:
 
     valgrind --tool=callgrind --branch-sim=yes \
-      --toggle-collect='aquila::BasicMatchingEngine<aquila::PooledOrderBook>::process*' \
-      ./aquila --events 300000 --book pooled
+      --toggle-collect='limitbook::BasicMatchingEngine<limitbook::PooledOrderBook>::process*' \
+      ./limitbook --events 300000 --book pooled
     callgrind_annotate --inclusive=no callgrind.out.<pid>

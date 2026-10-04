@@ -3,7 +3,7 @@
 #include <charconv>
 #include <vector>
 
-namespace aquila {
+namespace limitbook {
 
 std::string toString(const Event& e) {
     switch (e.type) {
@@ -64,4 +64,4 @@ std::optional<Event> parseEvent(std::string_view line) {
     return std::nullopt;
 }
 
-}  // namespace aquila
+}  // namespace limitbook

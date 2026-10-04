@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Summarise Aquila benchmark output.
+"""Summarise LimitBook benchmark output.
 
 Inputs (produced by scripts/run_benchmarks.sh):
   data/order_book_benchmark.json        Google Benchmark, order-book micro-benchmarks
   data/matching_engine_benchmark.json   Google Benchmark, end-to-end replay
   data/queue_benchmark.json             Google Benchmark, mutex vs SPSC queue
-  data/aquila_runs.csv                  ./aquila CLI runs (single-threaded + pipeline sweeps)
+  data/limitbook_runs.csv               ./limitbook CLI runs (single-threaded + pipeline sweeps)
 
 Outputs:
   data/benchmark_results.csv            one flat table of every Google Benchmark median
@@ -68,7 +68,7 @@ def load_gbench(path: Path, suite: str) -> list[dict]:
 
 
 def load_cli(path: Path) -> list[dict]:
-    """Load ./aquila runs; repeated runs of one configuration collapse to the median
+    """Load ./limitbook runs; repeated runs of one configuration collapse to the median
     run (per metric), since two-thread runs are sensitive to scheduling noise."""
     if not path.exists():
         print(f"  (missing {path}, skipped)")
@@ -313,7 +313,7 @@ def main() -> None:
     gb = (load_gbench(d / "order_book_benchmark.json", "order_book")
           + load_gbench(d / "matching_engine_benchmark.json", "matching_engine")
           + load_gbench(d / "queue_benchmark.json", "queue"))
-    cli = load_cli(d / "aquila_runs.csv")
+    cli = load_cli(d / "limitbook_runs.csv")
 
     if gb:
         out = d / "benchmark_results.csv"

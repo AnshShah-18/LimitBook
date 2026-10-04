@@ -11,7 +11,7 @@
 #include "bench_common.hpp"
 #include "latency.hpp"
 
-using namespace aquila;
+using namespace limitbook;
 
 namespace {
 

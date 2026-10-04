@@ -6,7 +6,7 @@
 #include "event_generator.hpp"
 #include "matching_engine.hpp"
 
-namespace aquila::bench {
+namespace limitbook::bench {
 
 // Events are generated once per configuration and cached, so benchmark time only
 // covers the engine, never the generator.
@@ -28,4 +28,4 @@ inline const std::vector<Event>& cachedEvents(std::size_t count, std::size_t max
     return cache.back().events;
 }
 
-}  // namespace aquila::bench
+}  // namespace limitbook::bench

@@ -14,20 +14,20 @@ for bench in order_book_benchmark matching_engine_benchmark queue_benchmark; do
   "$B/$bench" $REPS $AGG --benchmark_out="data/$bench.json" --benchmark_out_format=json
 done
 
-echo "== aquila CLI sweeps -> data/aquila_runs.csv"
-rm -f data/aquila_runs.csv
+echo "== limitbook CLI sweeps -> data/limitbook_runs.csv"
+rm -f data/limitbook_runs.csv
 for book in baseline pooled; do
   for n in 10000 100000 1000000; do
-    "$B/aquila" --events "$n" --book "$book" --csv data/aquila_runs.csv > /dev/null
+    "$B/limitbook" --events "$n" --book "$book" --csv data/limitbook_runs.csv > /dev/null
   done
 done
 # Two-thread runs are sensitive to scheduling, so each configuration runs 3 times;
 # the analysis script reports the median run.
 for rep in 1 2 3; do
   for mode in mutex spsc; do
-    "$B/aquila" --events 1000000 --mode "$mode" --csv data/aquila_runs.csv > /dev/null   # saturated
+    "$B/limitbook" --events 1000000 --mode "$mode" --csv data/limitbook_runs.csv > /dev/null   # saturated
     for rate in 250000 500000 1000000 2000000 4000000; do                              # paced
-      "$B/aquila" --events 1000000 --mode "$mode" --rate "$rate" --csv data/aquila_runs.csv > /dev/null
+      "$B/limitbook" --events 1000000 --mode "$mode" --rate "$rate" --csv data/limitbook_runs.csv > /dev/null
     done
   done
 done

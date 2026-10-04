@@ -2,7 +2,7 @@
 
 #include "pipeline.hpp"
 
-namespace aquila {
+namespace limitbook {
 
 // Both queues are header templates; instantiate them for the pipeline's element type
 // here so template errors surface when this library builds, and check the contract.
@@ -12,4 +12,4 @@ template class SpscRingBuffer<TimedEvent>;
 static_assert(BlockingQueue<MutexQueue<TimedEvent>, TimedEvent>);
 static_assert(BlockingQueue<SpscRingBuffer<TimedEvent>, TimedEvent>);
 
-}  // namespace aquila
+}  // namespace limitbook

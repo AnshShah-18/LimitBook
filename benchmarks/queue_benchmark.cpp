@@ -12,7 +12,7 @@
 #include "event_queue.hpp"
 #include "pipeline.hpp"
 
-using namespace aquila;
+using namespace limitbook;
 
 namespace {
 
