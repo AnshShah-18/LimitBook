@@ -114,15 +114,33 @@ would be. Concurrency sits at the boundary.
 
 ## Build
 
-Requirements: a C++20 compiler (tested with GCC 13), CMake ≥ 3.20, and Python 3 for
-analysis (standard library only; matplotlib is optional and only needed for plots). GoogleTest and Google Benchmark
-are fetched from GitHub at configure time.
+Requirements:
+- A C++20 compiler. Tested with GCC 13 and Clang 18 on Linux, and Apple Clang 17 on
+  macOS (Apple Silicon).
+- CMake 3.20 or newer.
+- Python 3 for analysis (standard library only; matplotlib is optional and only
+  needed for plots).
+
+GoogleTest and Google Benchmark are fetched from GitHub at configure time, so the
+first configure needs internet access.
+
+On macOS, install the tools with `xcode-select --install` and `brew install cmake`.
+On Ubuntu/Debian, use `sudo apt install build-essential cmake git`.
 
 ```bash
+git clone https://github.com/<your-username>/Aquila.git
+cd Aquila
 mkdir build
 cd build
-cmake ..                      # Release by default
+cmake ..
 cmake --build . -j
+```
+
+The build type defaults to Release. Run the tests and the engine from inside `build`:
+
+```bash
+ctest --output-on-failure
+./aquila --events 1000000
 ```
 
 Offline build with local checkouts of the two libraries:
@@ -271,6 +289,31 @@ Order-book operations (per add+cancel or cancel+re-add pair):
 
 ![Throughput by workload](data/plots/throughput_by_workload.png)
 ![Latency percentiles](data/plots/latency_percentiles.png)
+
+### Results on Apple Silicon (macOS)
+
+The same build on an Apple Silicon Mac (Apple Clang 17, Release), with one
+`./aquila --events 1000000` run:
+
+```
+Mode:              single (pooled book)
+Events processed:  1,000,000
+Trades executed:   205,714
+Shares executed:   25,959,400
+Wall time:         0.0301642 s
+Throughput:        33,151,919 events/sec
+```
+
+The trade and share counts match the Linux run exactly, because the event stream is
+seeded and the engine is deterministic. Throughput is about 1.6× the Linux VM's.
+
+Per-event latency percentiles from the CLI aren't meaningful on this Mac.
+`std::chrono::steady_clock` advances in steps of about 41.7 ns (a 24 MHz counter),
+and the engine handles an event in less time than that. Most samples therefore read
+as 0 or 1 tick, and percentiles come out as multiples of ~41 ns. The Linux latency
+figures above come from a nanosecond-resolution clock. On Apple Silicon, measure
+latency in batches of events, or use the two-thread modes, whose latencies are in
+microseconds.
 
 ### Optimization log
 

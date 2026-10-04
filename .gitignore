@@ -5,3 +5,5 @@ cmake-build-*/
 compile_commands.json
 __pycache__/
 *.out
+Testing/
+.DS_Store
