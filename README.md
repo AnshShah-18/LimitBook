@@ -128,7 +128,7 @@ On macOS, install the tools with `xcode-select --install` and `brew install cmak
 On Ubuntu/Debian, use `sudo apt install build-essential cmake git`.
 
 ```bash
-git clone https://github.com/<your-username>/LimitBook.git
+git clone https://github.com/AnshShah-18/LimitBook.git
 cd LimitBook
 mkdir build
 cd build
