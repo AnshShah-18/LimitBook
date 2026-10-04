@@ -1,0 +1,2 @@
+baseline   allocations/event:  0.758   bytes/event:    33.5   (steady state, 900000 events)
+pooled     allocations/event:  0.000   bytes/event:     0.0   (steady state, 900000 events)

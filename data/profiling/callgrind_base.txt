@@ -1,0 +1,45 @@
+--------------------------------------------------------------------------------
+Profile data file 'cgb.base.out' (creator: callgrind-3.22.0)
+--------------------------------------------------------------------------------
+I1 cache: 
+D1 cache: 
+LL cache: 
+Timerange: Basic block 0 - 48740688
+Trigger: Program termination
+Profiled target:  ./build-prof/aquila --events 300000 --book baseline (PID 3135, part 1)
+Events recorded:  Ir Bc Bcm Bi Bim
+Events shown:     Ir Bc Bcm Bi Bim
+Event sort order: Ir Bc Bcm Bi Bim
+Thresholds:       99 0 0 0 0
+Include dirs:     
+User annotated:   
+Auto-annotation:  on
+
+--------------------------------------------------------------------------------
+Ir                   Bc                  Bcm                Bi                 Bim              
+--------------------------------------------------------------------------------
+113,796,742 (100.0%) 14,673,905 (100.0%) 1,265,867 (100.0%) 1,494,560 (100.0%) 450,488 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir                  Bc                 Bcm              Bi               Bim               file:function
+--------------------------------------------------------------------------------
+19,922,049 (17.51%) 2,562,281 (17.46%) 286,949 (22.67%)       .                .           include/matching_engine.hpp:aquila::BasicMatchingEngine<aquila::MapListOrderBook>::process(aquila::Event const&, std::vector<aquila::Trade, std::allocator<aquila::Trade> >&) [clone .isra.0] 
+12,926,272 (11.36%) 2,097,776 (14.30%)  33,725 ( 2.66%)       .                .           ./malloc/./malloc/malloc.c:_int_free 
+10,587,960 ( 9.30%) 1,681,536 (11.46%)   7,937 ( 0.63%)       .                .           ./malloc/./malloc/malloc.c:malloc 
+ 6,295,240 ( 5.53%)   674,490 ( 4.60%)      37 ( 0.00%)       .                .           ./malloc/./malloc/malloc.c:free 
+ 6,164,264 ( 5.42%) 1,603,704 (10.93%) 386,106 (30.50%)       .                .           stl_tree.h:aquila::MapListOrderBook::add(aquila::Order const&)
+ 4,180,770 ( 3.67%) 1,114,810 ( 7.60%) 299,337 (23.65%)       .                .           stl_tree.h:aquila::MapListOrderBook::cancel(unsigned long)
+ 3,961,461 ( 3.48%)   586,401 ( 4.00%)   6,068 ( 0.48%)       .                .           hashtable.h:aquila::MapListOrderBook::add(aquila::Order const&)
+ 3,834,369 ( 3.37%)   348,579 ( 2.38%)   2,339 ( 0.18%)       .                .           src/order_book.cpp:aquila::MapListOrderBook::add(aquila::Order const&) 
+ 3,764,608 ( 3.31%)   235,288 ( 1.60%)       2 ( 0.00%)       .                .           ???:operator new(unsigned long) 
+ 3,732,381 ( 3.28%)   438,831 ( 2.99%)   6,519 ( 0.51%)       .                .           hashtable.h:std::_Hashtable<unsigned long, std::pair<unsigned long const, aquila::MapListOrderBook::Locator>, std::allocator<std::pair<unsigned long const, aquila::MapListOrderBook::Locator> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_erase(unsigned long, std::__detail::_Hash_node_base*, std::__detail::_Hash_node<std::pair<unsigned long const, aquila::MapListOrderBook::Locator>, false>*) 
+ 3,372,148 ( 2.96%)   294,409 ( 2.01%)  39,341 ( 3.11%)       .                .           src/order_book.cpp:aquila::MapListOrderBook::cancel(unsigned long) 
+ 2,844,528 ( 2.50%)   623,877 ( 4.25%)  29,945 ( 2.37%)       .                .           hashtable.h:std::_Hashtable<unsigned long, std::pair<unsigned long const, aquila::MapListOrderBook::Locator>, std::allocator<std::pair<unsigned long const, aquila::MapListOrderBook::Locator> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::find(unsigned long const&) const [clone .isra.0] 
+ 2,817,784 ( 2.48%)   436,528 ( 2.97%)   5,467 ( 0.43%)       .                .           ./malloc/./malloc/malloc.c:_int_malloc 
+ 1,859,088 ( 1.63%)   116,193 ( 0.79%)      45 ( 0.00%)       .                .           ???:std::__detail::_Prime_rehash_policy::_M_need_rehash(unsigned long, unsigned long, unsigned long) const 
+ 1,549,856 ( 1.36%)   306,250 ( 2.09%)  62,608 ( 4.95%)       .                .           hashtable.h:std::_Hashtable<unsigned long, std::pair<unsigned long const, aquila::MapListOrderBook::Locator>, std::allocator<std::pair<unsigned long const, aquila::MapListOrderBook::Locator> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::find(unsigned long const&) [clone .isra.0] 
+ 1,455,095 ( 1.28%)    63,265 ( 0.43%)      23 ( 0.00%)       .                .           vector.tcc:aquila::Trade& std::vector<aquila::Trade, std::allocator<aquila::Trade> >::emplace_back<aquila::Trade>(aquila::Trade&&) [clone .isra.0] 
+ 1,313,454 ( 1.15%)    32,867 ( 0.22%)   1,670 ( 0.13%)       .                .           hashtable_policy.h:std::_Hashtable<unsigned long, std::pair<unsigned long const, aquila::MapListOrderBook::Locator>, std::allocator<std::pair<unsigned long const, aquila::MapListOrderBook::Locator> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::find(unsigned long const&) const [clone .isra.0]
+ 1,273,223 ( 1.12%)   181,889 ( 1.24%)      24 ( 0.00%)       .                .           src/order_book.cpp:aquila::MapListOrderBook::find(unsigned long) const 
+ 1,166,105 ( 1.02%)   358,916 ( 2.45%)  70,115 ( 5.54%)       .                .           src/order_book.cpp:aquila::MapListOrderBook::best(aquila::Side) 
+ 1,062,037 ( 0.93%)     5,430 ( 0.04%)       1 ( 0.00%)       .                .           hashtable_policy.h:aquila::MapListOrderBook::add(aquila::Order const&)

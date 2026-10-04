@@ -1,0 +1,27 @@
+# step1 = pooled book with std::lower_bound level search; step2 = linear scan from best price (current code).
+# Interleaved rounds via tools/ab_compare.py; throughput in million items/sec.
+
+BM_Replay<BaselineEngine>/10000                  step1  median   13.17 M/s   min  12.43  max  17.44
+BM_Replay<BaselineEngine>/10000                  step2  median   13.71 M/s   min  13.42  max  16.08
+BM_Replay<BaselineEngine>/100000                 step1  median   14.69 M/s   min  13.79  max  15.16
+BM_Replay<BaselineEngine>/100000                 step2  median   14.58 M/s   min  14.43  max  14.88
+BM_Replay<BaselineEngine>/1000000                step1  median   14.87 M/s   min  14.39  max  19.18
+BM_Replay<BaselineEngine>/1000000                step2  median   14.57 M/s   min  13.63  max  15.10
+BM_Replay<PooledEngine>/10000                    step1  median   17.71 M/s   min  17.10  max  18.28
+BM_Replay<PooledEngine>/10000                    step2  median   19.86 M/s   min  18.82  max  20.57
+BM_Replay<PooledEngine>/100000                   step1  median   18.44 M/s   min  17.44  max  23.88
+BM_Replay<PooledEngine>/100000                   step2  median   19.84 M/s   min  19.16  max  20.20
+BM_Replay<PooledEngine>/1000000                  step1  median   18.56 M/s   min  17.93  max  23.91
+BM_Replay<PooledEngine>/1000000                  step2  median   19.70 M/s   min  19.16  max  20.35
+BM_ReplayBookSize<BaselineEngine>/100            step1  median   13.96 M/s   min  13.72  max  18.10
+BM_ReplayBookSize<BaselineEngine>/100            step2  median   13.92 M/s   min  13.61  max  14.23
+BM_ReplayBookSize<BaselineEngine>/1000           step1  median   15.70 M/s   min  15.44  max  20.44
+BM_ReplayBookSize<BaselineEngine>/1000           step2  median   15.71 M/s   min  14.75  max  16.10
+BM_ReplayBookSize<BaselineEngine>/10000          step1  median   14.86 M/s   min  13.24  max  19.14
+BM_ReplayBookSize<BaselineEngine>/10000          step2  median   14.47 M/s   min  13.33  max  14.94
+BM_ReplayBookSize<PooledEngine>/100              step1  median   18.87 M/s   min  17.81  max  24.39
+BM_ReplayBookSize<PooledEngine>/100              step2  median   21.15 M/s   min  19.98  max  21.46
+BM_ReplayBookSize<PooledEngine>/1000             step1  median   18.86 M/s   min  16.93  max  24.65
+BM_ReplayBookSize<PooledEngine>/1000             step2  median   20.42 M/s   min  20.17  max  20.72
+BM_ReplayBookSize<PooledEngine>/10000            step1  median   18.35 M/s   min  17.90  max  23.81
+BM_ReplayBookSize<PooledEngine>/10000            step2  median   19.44 M/s   min  18.67  max  20.97

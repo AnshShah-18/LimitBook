@@ -1,0 +1,45 @@
+--------------------------------------------------------------------------------
+Profile data file 'cgb.step1.out' (creator: callgrind-3.22.0)
+--------------------------------------------------------------------------------
+I1 cache: 
+D1 cache: 
+LL cache: 
+Timerange: Basic block 0 - 36025024
+Trigger: Program termination
+Profiled target:  ./build-prof1/aquila --events 300000 --book pooled (PID 3355, part 1)
+Events recorded:  Ir Bc Bcm Bi Bim
+Events shown:     Ir Bc Bcm Bi Bim
+Event sort order: Ir Bc Bcm Bi Bim
+Thresholds:       99 0 0 0 0
+Include dirs:     
+User annotated:   
+Auto-annotation:  on
+
+--------------------------------------------------------------------------------
+Ir                  Bc                 Bcm                Bi           Bim         
+--------------------------------------------------------------------------------
+74,340,170 (100.0%) 7,417,897 (100.0%) 1,219,599 (100.0%) 492 (100.0%) 30 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir                  Bc                 Bcm              Bi           Bim          file:function
+--------------------------------------------------------------------------------
+19,922,049 (26.80%) 2,562,281 (34.54%) 355,692 (29.16%)   .           .           step1src/include/matching_engine.hpp:aquila::BasicMatchingEngine<aquila::PooledOrderBook>::process(aquila::Event const&, std::vector<aquila::Trade, std::allocator<aquila::Trade> >&) [clone .isra.0] 
+ 9,909,057 (13.33%) 2,543,665 (34.29%) 713,224 (58.48%)   .           .           stl_algobase.h:aquila::PooledOrderBook::lowerBound(std::vector<aquila::PooledOrderBook::Level, std::allocator<aquila::PooledOrderBook::Level> > const&, aquila::Side, long)
+ 5,427,231 ( 7.30%)   229,976 ( 3.10%)   3,018 ( 0.25%)   .           .           step1src/src/pooled_order_book.cpp:aquila::PooledOrderBook::add(aquila::Order const&) 
+ 5,339,215 ( 7.18%)         .                .            .           .           stl_iterator.h:aquila::PooledOrderBook::lowerBound(std::vector<aquila::PooledOrderBook::Level, std::allocator<aquila::PooledOrderBook::Level> > const&, aquila::Side, long)
+ 4,023,026 ( 5.41%)   116,193 ( 1.57%)   6,007 ( 0.49%)   .           .           step1src/src/pooled_order_book.cpp:aquila::PooledOrderBook::allocNode(aquila::Order const&) 
+ 3,994,925 ( 5.37%)   333,114 ( 4.49%)  11,515 ( 0.94%)   .           .           step1src/src/pooled_order_book.cpp:aquila::PooledOrderBook::unlink(std::vector<aquila::PooledOrderBook::Level, std::allocator<aquila::PooledOrderBook::Level> >&, unsigned long, unsigned int) 
+ 2,554,058 ( 3.44%)        60 ( 0.00%)      14 ( 0.00%)   .           .           stl_vector.h:aquila::PooledOrderBook::add(aquila::Order const&)
+ 2,488,603 ( 3.35%)   377,021 ( 5.08%)  64,056 ( 5.25%)   .           .           step1src/include/flat_id_map.hpp:aquila::PooledOrderBook::cancel(unsigned long)
+ 2,324,892 ( 3.13%)   348,923 ( 4.70%)     771 ( 0.06%)   .           .           step1src/include/flat_id_map.hpp:aquila::PooledOrderBook::add(aquila::Order const&)
+ 1,983,991 ( 2.67%)         .                .            .           .           step1src/src/pooled_order_book.cpp:aquila::PooledOrderBook::cancel(unsigned long) 
+ 1,455,095 ( 1.96%)    63,265 ( 0.85%)       2 ( 0.00%)   .           .           vector.tcc:aquila::Trade& std::vector<aquila::Trade, std::allocator<aquila::Trade> >::emplace_back<aquila::Trade>(aquila::Trade&&) [clone .isra.0] 
+ 1,332,456 ( 1.79%)   111,038 ( 1.50%)      25 ( 0.00%)   .           .           stl_vector.h:aquila::PooledOrderBook::unlink(std::vector<aquila::PooledOrderBook::Level, std::allocator<aquila::PooledOrderBook::Level> >&, unsigned long, unsigned int)
+ 1,312,225 ( 1.77%)   201,177 ( 2.71%)  16,924 ( 1.39%)   .           .           step1src/include/flat_id_map.hpp:aquila::PooledOrderBook::find(unsigned long) const
+ 1,183,785 ( 1.59%)         .                .            .           .           stl_vector.h:aquila::PooledOrderBook::cancel(unsigned long)
+ 1,168,911 ( 1.57%)   194,819 ( 2.63%)  46,640 ( 3.82%)   .           .           step1src/src/pooled_order_book.cpp:aquila::PooledOrderBook::lowerBound(std::vector<aquila::PooledOrderBook::Level, std::allocator<aquila::PooledOrderBook::Level> > const&, aquila::Side, long) 
+   990,229 ( 1.33%)         .                .            .           .           step1src/include/order.hpp:aquila::BasicMatchingEngine<aquila::PooledOrderBook>::process(aquila::Event const&, std::vector<aquila::Trade, std::allocator<aquila::Trade> >&) [clone .isra.0]
+   966,883 ( 1.30%)         .                .            .           .           stl_vector.h:aquila::PooledOrderBook::find(unsigned long) const
+   842,712 ( 1.13%)         .                .            .           .           step1src/src/pooled_order_book.cpp:aquila::PooledOrderBook::popBest(aquila::Side) 
+   717,837 ( 0.97%)   179,458 ( 2.42%)      11 ( 0.00%)   .           .           step1src/src/pooled_order_book.cpp:aquila::PooledOrderBook::best(aquila::Side) 
+   717,832 ( 0.97%)         .                .            .           .           step1src/include/pooled_order_book.hpp:aquila::PooledOrderBook::best(aquila::Side)
